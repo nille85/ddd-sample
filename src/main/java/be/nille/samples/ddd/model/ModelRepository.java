@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface ModelRepository<E,P> {
     
+    void save(final E entity);
     
     E findOne(final P key);
     
