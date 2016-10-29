@@ -6,6 +6,9 @@
 package be.nille.samples.infrastructure.magazines;
 
 
+import be.nille.samples.infrastructure.database.magazines.MagazineRepository;
+import be.nille.samples.infrastructure.database.magazines.Magazine;
+import be.nille.samples.infrastructure.database.UserDatabaseConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Niels Holvoet
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = MagazinesDatabaseConfig.class)
+@ContextConfiguration(classes = UserDatabaseConfig.class)
 @Slf4j
 public class MagazineRepositoryIT {
     

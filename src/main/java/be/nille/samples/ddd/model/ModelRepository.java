@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.ddd.model.person;
+package be.nille.samples.ddd.model;
 
-import be.nille.samples.ddd.model.ModelRepository;
+import java.util.List;
 
 /**
  *
  * @author Niels Holvoet
  */
-public interface PersonRepository extends ModelRepository<Person, Long> {
+public interface ModelRepository<E,P> {
     
- 
+    
+    E findOne(final P key);
+    
+    List<E> findAll();
+    
 }

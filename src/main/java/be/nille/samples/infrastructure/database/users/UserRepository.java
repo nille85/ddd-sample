@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.magazines;
+package be.nille.samples.infrastructure.database.users;
 
-import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Niels Holvoet
  */
 @Repository
-public interface MagazineRepository extends JpaRepository<Magazine, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
     
 }

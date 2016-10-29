@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.users;
+package be.nille.samples.infrastructure.database.users;
 
+import be.nille.samples.infrastructure.database.magazines.Magazine;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -38,9 +39,10 @@ public class Subscription {
     @Setter
     private Date expirationDate;
     
-    @Column(name="MAGAZINE_ID")
+    @ManyToOne
+    @JoinColumn(name = "MAGAZINE_ID")
     @Setter
-    private Long magazineId;
+    private Magazine magazine;
     
     @ManyToOne
     @JoinColumn(name = "USER_ID")

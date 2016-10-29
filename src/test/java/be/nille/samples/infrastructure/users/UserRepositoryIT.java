@@ -5,6 +5,9 @@
  */
 package be.nille.samples.infrastructure.users;
 
+import be.nille.samples.infrastructure.database.users.User;
+import be.nille.samples.infrastructure.database.users.UserRepository;
+import be.nille.samples.infrastructure.database.UserDatabaseConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -5,8 +5,11 @@
  */
 package be.nille.samples.ddd.model.person;
 
+
+import be.nille.samples.ddd.model.magazine.Magazine;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.ToString;
 
 /**
@@ -16,13 +19,13 @@ import lombok.ToString;
 @ToString
 public class Person {
     
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private final List<Subscription> subscriptions;
+    private final Long id;
+    private final PersonName name;
+    private List<MagazineSubscription> subscriptions;
     
-    public Person(){
-       
+    public Person(final Long id, final PersonName name){
+        this.id = id;
+        this.name = name;
         this.subscriptions = new ArrayList<>();
     }
 
@@ -30,30 +33,28 @@ public class Person {
         return id;
     }
     
-
-    public String getFirstName() {
-        return firstName;
+    public PersonName getName(){
+        return name;
+    }
+    
+    public void subscribe(final Magazine magazine){
+        MagazineSubscription subscription = new MagazineSubscription(magazine);
+        subscriptions.add(subscription);
+    }
+    
+    public void unsubscribe(final Magazine magazine){
+        this.subscriptions = subscriptions.stream().filter(s -> {
+            return !magazine.getCode().equals(s.getMagazine().getCode());
+        }).collect(Collectors.toList());
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public List<Subscription> getSubscriptions() {
+    public List<MagazineSubscription> getSubscriptions() {
         return subscriptions;
     }
     
-    public void addSubscription(final Subscription subscription){
-        this.subscriptions.add(subscription);
-    }
+    
     
     
     

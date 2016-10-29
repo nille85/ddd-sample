@@ -7,46 +7,37 @@ package be.nille.samples.ddd.acl.person;
 
 import be.nille.samples.ddd.model.person.Person;
 import be.nille.samples.ddd.model.person.PersonRepository;
-import be.nille.samples.infrastructure.magazines.MagazineRepository;
-import be.nille.samples.infrastructure.users.User;
-import be.nille.samples.infrastructure.users.UserRepository;
+import be.nille.samples.infrastructure.database.users.User;
+import be.nille.samples.infrastructure.database.users.UserRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author Niels Holvoet
  */
 public class ACLPersonRepository implements PersonRepository {
-    
+
     private final UserRepository userRepository;
-    private final MagazineRepository magazineRepository;
     
-    public ACLPersonRepository(final UserRepository userRepository, final MagazineRepository magazineRepository){
+
+    public ACLPersonRepository(final UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.magazineRepository = magazineRepository;
     }
 
+   
     @Override
-    public Person savePerson(Person person) {
-        User user = PersonAdapter.getUserFromPerson(person);
-        user = userRepository.save(user);
-        return findPerson(user.getId());
-    }
-
-    @Override
-    public void removePerson(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Person findPerson(Long id) {
-        User user = userRepository.findOne(id);
-        return PersonAdapter.userToPerson(user);
+    public Person findOne(Long personId) {
+        User user = userRepository.findOne(personId);
+        return new AclPersonTransformer().transform(user);
     }
 
     @Override
     public List<Person> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userRepository.findAll().stream()
+                .map(user -> new AclPersonTransformer().transform(user))
+                .collect(Collectors.toList());
     }
+
     
 }

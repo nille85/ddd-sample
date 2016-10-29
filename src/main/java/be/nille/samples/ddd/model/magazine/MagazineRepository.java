@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.ddd.model.person;
+package be.nille.samples.ddd.model.magazine;
 
 import be.nille.samples.ddd.model.ModelRepository;
 
@@ -11,7 +11,8 @@ import be.nille.samples.ddd.model.ModelRepository;
  *
  * @author Niels Holvoet
  */
-public interface PersonRepository extends ModelRepository<Person, Long> {
+public interface MagazineRepository extends ModelRepository<Magazine, Long> {
     
- 
+   
+    
 }

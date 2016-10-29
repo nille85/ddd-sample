@@ -6,14 +6,11 @@
 package be.nille.samples.ddd.acl.person;
 
 import be.nille.samples.ddd.model.person.Person;
-import be.nille.samples.ddd.model.person.PersonRepository;
-import be.nille.samples.infrastructure.magazines.MagazineRepository;
-import be.nille.samples.infrastructure.users.User;
-import be.nille.samples.infrastructure.users.UserRepository;
+
+import be.nille.samples.infrastructure.database.users.User;
+import be.nille.samples.infrastructure.database.users.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -32,8 +29,7 @@ public class ACLPersonRepositoryTest {
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private MagazineRepository magazineRepository;
+    
 
     @InjectMocks
     private ACLPersonRepository aclPersonRepository;
@@ -44,22 +40,23 @@ public class ACLPersonRepositoryTest {
     }
 
     @Test
-    public void savePersonWithoutSubscriptions() {
+    public void loadPersonWithoutSubscriptions() {
 
         User user = new User();
         user.setFamilyName("Doe");
         user.setGivenName("John");
-        when(userRepository.save(any(User.class))).thenReturn(user);
+      
 
         when(userRepository.findOne(any(Long.class))).thenReturn(user);
 
-        Person person = new Person();
-        person.setFirstName("John");
-        person.setLastName("Doe");
-        person = aclPersonRepository.savePerson(person);
-        assertEquals("John", person.getFirstName());
-        assertEquals("Doe", person.getLastName());
+        
+       
+        Person person = aclPersonRepository.findOne(1L);
+        assertEquals("John Doe", person.getName().toString());
+        
 
     }
+    
+    
 
 }

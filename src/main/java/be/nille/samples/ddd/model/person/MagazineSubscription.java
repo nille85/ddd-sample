@@ -6,6 +6,7 @@
 package be.nille.samples.ddd.model.person;
 
 import be.nille.samples.ddd.model.magazine.Magazine;
+import java.util.Calendar;
 import java.util.Date;
 import lombok.ToString;
 
@@ -14,32 +15,30 @@ import lombok.ToString;
  * @author Niels Holvoet
  */
 @ToString
-public class Subscription {
+public class MagazineSubscription {
 
-    private Long id;
-    private Date expirationDate;
-    private Magazine magazine;
+    private final Date expirationDate;
+    private final Magazine magazine;
 
-    Subscription(){}
-
-    public Long getId() {
-        return id;
+    public MagazineSubscription(final Magazine magazine) {
+        this.expirationDate = calculateExpirationDate();
+        this.magazine = magazine;
     }
 
+   
     public Date getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
+    private Date calculateExpirationDate() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 1);
+        return c.getTime();
     }
 
     public Magazine getMagazine() {
         return magazine;
-    }
-
-    public void setMagazine(Magazine magazine) {
-        this.magazine = magazine;
     }
     
     

@@ -5,13 +5,14 @@
  */
 package be.nille.samples.ddd.model.person;
 
-import be.nille.samples.ddd.model.ModelRepository;
-
 /**
  *
  * @author Niels Holvoet
  */
-public interface PersonRepository extends ModelRepository<Person, Long> {
+public class PersonFactory {
     
- 
+    public static Person create(final Long id, final PersonName name){
+        return new Person(id, name);
+    }
+    
 }
