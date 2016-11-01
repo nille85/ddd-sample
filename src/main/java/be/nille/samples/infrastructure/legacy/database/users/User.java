@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.database.users;
+package be.nille.samples.infrastructure.legacy.database.users;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,7 +42,7 @@ public class User {
     private String familyName;
     
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<Subscription> subscriptions;
+    private List<Subscription> subscriptions = new ArrayList<>();
     
  
     

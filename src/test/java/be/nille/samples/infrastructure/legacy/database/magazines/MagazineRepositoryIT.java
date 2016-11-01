@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.users;
+package be.nille.samples.infrastructure.legacy.database.magazines;
 
-import be.nille.samples.infrastructure.database.users.User;
-import be.nille.samples.infrastructure.database.users.UserRepository;
-import be.nille.samples.infrastructure.database.UserDatabaseConfig;
+
+import be.nille.samples.infrastructure.legacy.database.UserDatabaseConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,21 +21,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = UserDatabaseConfig.class)
 @Slf4j
-public class UserRepositoryIT {
+public class MagazineRepositoryIT {
     
     @Autowired
-    private UserRepository repository;
+    private MagazineRepository repository;
     
     @Test
     public void testSave(){
-        User user = new User();
-        user.setGivenName("John");
-        user.setFamilyName("Doe");
+        Magazine magazine = new Magazine();
+        magazine.setCode("KL");
+        magazine.setDescription("Description of a simple magazine");
         
-        repository.save(user);
-        
+        repository.save(magazine);
         repository.findAll().stream()
-                .forEach(u -> log.debug(u.toString()));
+                .forEach(m -> log.debug(m.toString()));
     }
     
 }

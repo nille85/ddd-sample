@@ -20,7 +20,7 @@ public class MagazineSubscription {
     private final Date expirationDate;
     private final Magazine magazine;
 
-    public MagazineSubscription(final Magazine magazine) {
+    MagazineSubscription(final Magazine magazine) {
         this.expirationDate = calculateExpirationDate();
         this.magazine = magazine;
     }

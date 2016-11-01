@@ -18,7 +18,7 @@ public final class PersonName {
     private final String firstName;
     private final String lastName;
     
-    public PersonName(final String firstName, final String lastName){
+    PersonName(final String firstName, final String lastName){
         if(StringUtils.isBlank(firstName)){
             throw new IllegalArgumentException("Firstname is a mandatory field");
         }

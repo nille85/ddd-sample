@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.database.users;
+package be.nille.samples.infrastructure.legacy.database.users;
 
-import be.nille.samples.infrastructure.database.magazines.Magazine;
+import be.nille.samples.infrastructure.legacy.database.magazines.Magazine;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;

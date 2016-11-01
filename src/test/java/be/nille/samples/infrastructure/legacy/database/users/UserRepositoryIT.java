@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.magazines;
+package be.nille.samples.infrastructure.legacy.database.users;
 
-
-import be.nille.samples.infrastructure.database.magazines.MagazineRepository;
-import be.nille.samples.infrastructure.database.magazines.Magazine;
-import be.nille.samples.infrastructure.database.UserDatabaseConfig;
+import be.nille.samples.infrastructure.legacy.database.users.User;
+import be.nille.samples.infrastructure.legacy.database.users.UserRepository;
+import be.nille.samples.infrastructure.legacy.database.UserDatabaseConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,21 +22,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = UserDatabaseConfig.class)
 @Slf4j
-public class MagazineRepositoryIT {
+public class UserRepositoryIT {
     
     @Autowired
-    private MagazineRepository repository;
+    private UserRepository repository;
     
     @Test
     public void testSave(){
-        Magazine magazine = new Magazine();
-        magazine.setCode("KL");
-        magazine.setDescription("Description of a simple magazine");
+        User user = new User();
+        user.setGivenName("John");
+        user.setFamilyName("Doe");
         
-        repository.save(magazine);
+        repository.save(user);
         
         repository.findAll().stream()
-                .forEach(m -> log.debug(m.toString()));
+                .forEach(u -> log.debug(u.toString()));
     }
     
 }

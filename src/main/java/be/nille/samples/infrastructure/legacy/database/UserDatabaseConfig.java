@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.database;
+package be.nille.samples.infrastructure.legacy.database;
 
 
 import java.util.Properties;
@@ -31,7 +31,7 @@ import org.springframework.transaction.PlatformTransactionManager;
         transactionManagerRef = "userTransactionManager")
 public class UserDatabaseConfig {
     
-    public static final String REPOSITORY_LOCATION = "be.nille.samples.infrastructure.database";
+    public static final String REPOSITORY_LOCATION = "be.nille.samples.infrastructure.legacy.database";
     
     @Bean
     @Primary

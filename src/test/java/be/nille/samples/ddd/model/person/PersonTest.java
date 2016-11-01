@@ -23,12 +23,12 @@ public class PersonTest {
     
     
     @Test
-    public void subscribe(){
+    public void subscribeTo(){
         Magazine magazine = new Magazine("KL");
         magazine.setDescription("Description of this magazine");
         
-        Person person = new Person(1L, new PersonName("John", "Doe"));
-        person.subscribe(magazine);
+        Person person = PersonFactory.create("John", "Doe");
+        person.subscribeTo(magazine);
         assertFalse(person.getSubscriptions().isEmpty());
         
         person.getSubscriptions().forEach(subscription -> log.debug(subscription.toString()));

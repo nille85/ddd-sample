@@ -19,14 +19,19 @@ import lombok.ToString;
 @ToString
 public class Person {
     
-    private final Long id;
+    private Long id;
     private final PersonName name;
     private List<MagazineSubscription> subscriptions;
     
-    public Person(final Long id, final PersonName name){
+    //constructor used for reading existing persons
+    Person(final Long id, final PersonName name){
         this.id = id;
         this.name = name;
         this.subscriptions = new ArrayList<>();
+    }
+    //constructor used for saving new persons
+    Person(final PersonName name){
+        this(null, name);
     }
 
     public Long getId() {
@@ -37,7 +42,7 @@ public class Person {
         return name;
     }
     
-    public void subscribe(final Magazine magazine){
+    public void subscribeTo(final Magazine magazine){
         MagazineSubscription subscription = new MagazineSubscription(magazine);
         subscriptions.add(subscription);
     }

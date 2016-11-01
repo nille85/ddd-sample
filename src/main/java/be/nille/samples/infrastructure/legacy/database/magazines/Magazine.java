@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.samples.infrastructure.database.magazines;
+package be.nille.samples.infrastructure.legacy.database.magazines;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
